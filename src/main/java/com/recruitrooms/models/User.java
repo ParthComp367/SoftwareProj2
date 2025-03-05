@@ -3,19 +3,30 @@ package com.recruitrooms.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@Data
+@Data  // Lombok generates getters, setters, toString, equals, and hashCode
+@NoArgsConstructor  // Generates a no-argument constructor
+@AllArgsConstructor  // Generates a constructor with all fields
 @Document(collection = "users")  // MongoDB collection name
 public class User {
     @Id
-    private String id;
+    private String id;  // MongoDB will auto-generate this
+
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String dateOfBirth;
+    private String address;
+    private String occupation;
+    private String securityQuestion;
+    private String securityAnswer;
     private String username;
-    private String password;  // Store encrypted password (hashed)
+    private String password;  // Should be stored as a hashed value
     private String role;  // INTERVIEWER, INTERVIEWEE, ADMIN
+    
 	public String getId() {
 		return id;
 	}
@@ -46,6 +57,36 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -65,4 +106,3 @@ public class User {
 		this.role = role;
 	}
 }
-

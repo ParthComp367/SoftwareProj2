@@ -1,12 +1,15 @@
 package com.recruitrooms.repositories;
 
-import java.util.Optional;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-
 import com.recruitrooms.models.User;
 
-public interface UserRepository extends ReactiveMongoRepository<User, String> {
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-    Optional<User> findByUsername(String username);
-    
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
+    Mono<User> findByUsername(String username); 
+    Mono<User> findByPhoneNumber(String phoneNumber);
+	boolean existByUserName(String username);
+	boolean existByPhoneNumber(String phoneNumber);
+	Flux<User> findByRole(String role);	
 }
